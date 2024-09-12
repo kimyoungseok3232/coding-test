@@ -1,0 +1,42 @@
+# https://www.acmicpc.net/problem/1260
+
+import sys
+
+
+def dfs(e_list, start, visited):
+    visited.append(start)
+    print(start, end=' ')
+    now = start
+    for i in sorted(e_list[now]):
+        if i in visited:
+            continue
+        dfs(e_list, i, visited)
+
+
+def bfs(e_list, start, visited):
+    visited.append(start)
+    print(start, end=' ')
+    for j in visited:
+        for i in sorted(e_list[j]):
+            if i in visited:
+                continue
+            visited.append(i)
+            print(i, end=' ')
+
+
+def init():
+    node, edge, start = map(int, sys.stdin.readline().rstrip().split())
+    edge_list = [[] for x in range(node+1)]
+
+    for i in range(edge):
+        t1, t2 = map(int, sys.stdin.readline().rstrip().split())
+        edge_list[t1].append(t2)
+        edge_list[t2].append(t1)
+
+    return edge_list, start
+
+
+a, b = init()
+dfs(a,b,[])
+print()
+bfs(a,b,[])

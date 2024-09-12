@@ -1,0 +1,15 @@
+# https://www.acmicpc.net/problem/20562
+
+import sys
+count = int(input())
+for i in range(count):
+    N, M, X = map(int, sys.stdin.readline().rstrip().split())
+    tmp1 = X + N
+    tmp2 = X + 2*N
+    if tmp1//M != tmp2//M or tmp1%M == 0:
+        ans = 0
+    else:
+        ans = tmp1
+        if (tmp2+1)%M == 0:
+            ans -= 1
+    print(ans%M)
