@@ -6,7 +6,7 @@ def solution(n, bans):
     for i in range(len(bans)):
         tmp = 0
         mul = 1
-        for idx, a in enumerate(reversed(bans[i])):
+        for a in bans[i][::-1]:
             tmp += mul*a_dict[a]
             mul *= 26
         bans[i] = tmp
