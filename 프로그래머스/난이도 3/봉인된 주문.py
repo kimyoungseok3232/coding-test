@@ -3,17 +3,16 @@
 def solution(n, bans):
     answer = ''
     a_dict = {chr(i+96):i for i in range(1,27)}
-    ban_int = []
-    for ban in bans:
+    for i in range(len(bans)):
         tmp = 0
         mul = 1
-        for idx, a in enumerate(reversed(ban)):
+        for idx, a in enumerate(reversed(bans[i])):
             tmp += mul*a_dict[a]
             mul *= 26
-        ban_int.append(tmp)
+        bans[i] = tmp
         
-    ban_int.sort()
-    for ban in ban_int:
+    bans.sort()
+    for ban in bans:
         if ban <= n: n += 1
 
     while n:
