@@ -20,8 +20,8 @@ def solution(nodes, edges):
             tmp += n % 2 == len(tree[n]) % 2
             visited.add(n)
             q.extend(i for i in tree[n] if i not in visited)
-        if tmp == 1: answer[1] += 1
-        if tmp == count-1: answer[0] += 1
+        if tmp == 1: answer[0] += 1
+        if tmp == count-1: answer[1] += 1
             
         
-    return answer[::-1]
+    return answer
